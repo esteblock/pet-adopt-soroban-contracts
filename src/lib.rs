@@ -14,6 +14,7 @@ pub enum DataKey {
 
 pub struct PetAdoptContract;
 
+
 #[contractimpl]
 impl PetAdoptContract {
     pub fn adopt(env: Env, pet_id: u32) -> u32 {
@@ -39,3 +40,6 @@ impl PetAdoptContract {
 
 
 }
+
+
+mod test;
