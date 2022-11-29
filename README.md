@@ -9,13 +9,18 @@ cargo test
 ```
 cargo build --target wasm32-unknown-unknown --release
 ```
+
+# Test de contract
+```
+cargo test
+```
 # Run the contract on a sandbox
 ```
 soroban invoke \
-    --wasm ../target/wasm32-unknown-unknown/release/pet-adopt-soroban.wasm \
+    --wasm ./target/wasm32-unknown-unknown/release/pet_adopt_soroban.wasm \
     --id 1 \
-    --fn hello \
-    --arg friend
+    --fn adopt \
+    --arg 1
 ```
 
 # Deploy to a local network:
@@ -52,7 +57,19 @@ PET_ADOPT_ID="$(
     --network-passphrase 'Standalone Network ; February 2017'
 )"
 echo "$PET_ADOPT_ID" > .soroban/pet_adopt_id
+echo "Contract deployed with id $PET_ADOPT_ID"
 
+```
+
+
+```
+soroban invoke \
+    --id $PET_ADOPT_ID \
+    --secret-key $SECRETKEY \
+    --rpc-url http://localhost:8000/soroban/rpc \
+    --network-passphrase 'Standalone Network ; February 2017' \
+    --fn hello \
+    --arg friend
 ```
 
 
