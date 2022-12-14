@@ -99,7 +99,7 @@ soroban invoke \
     --rpc-url http://localhost:8000/soroban/rpc \
     --network-passphrase 'Standalone Network ; February 2017' \
     --fn adopter \
-    --arg 1
+    --arg 2
 ```
 
 As expected, you'll see that if no one has adopted the pet, the current adopter is the Contract itself (it has been coded this way). You should see something like:
@@ -108,6 +108,8 @@ As expected, you'll see that if no one has adopted the pet, the current adopter 
 ["Contract",[220,228,152,154,195,137,188,41,177,27,202,52,159,3,226,232,105,48,20,182,152,122,13,236,11,241,175,157,0,104,99,173]]
 
 ```
+
+DO it by yourself: test de adopted function on the terminal
 
 Erase your secrets from the environment
 ```
