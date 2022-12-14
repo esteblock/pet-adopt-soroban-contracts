@@ -25,7 +25,7 @@ impl PetAdoptContract {
         It will return either:
             Account with an AccountId if the contract was invoked directly by an account.
             Contract with a BytesN<32> contract ID if the contract was invoked by another contract.
-        */
+        */  
         let invoker = env.invoker();
         let key = DataKey::PetAdopter(pet_id);
         env.storage().set(&key, invoker);
@@ -37,6 +37,13 @@ impl PetAdoptContract {
         let key = DataKey::PetAdopter(pet_id);
         env.storage().get(key).unwrap_or(Ok(Address::Contract(env.current_contract()))).unwrap()
     }
+
+    pub fn adopted(env: Env, pet_id: u32) -> bool {
+        let key = DataKey::PetAdopter(pet_id);
+        env.storage().has(key)
+    }
+
+    
 
 
 }

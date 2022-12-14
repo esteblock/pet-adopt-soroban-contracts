@@ -37,6 +37,12 @@ fn test() {
     assert_ne!(returned_adopter, Account(adopter_not));
     //assert_eq!(0, 1);
 
+    // Testing adopted function
+    let not_adopted_pet_id: u32 = 7;
+    let returned_not_adopted = client.adopted(&not_adopted_pet_id);
+    assert_eq!(returned_not_adopted, false);
+
+
 }
 
 
