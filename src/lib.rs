@@ -28,14 +28,14 @@ impl PetAdoptContract {
         */
         let invoker = env.invoker();
         let key = DataKey::PetAdopter(pet_id);
-        env.data().set(&key, invoker);
+        env.storage().set(&key, invoker);
         pet_id
 
     }
 
     pub fn adopter(env: Env, pet_id: u32) -> Address {
         let key = DataKey::PetAdopter(pet_id);
-        env.data().get(key).unwrap_or(Ok(Address::Contract(env.current_contract()))).unwrap()
+        env.storage().get(key).unwrap_or(Ok(Address::Contract(env.current_contract()))).unwrap()
     }
 
 

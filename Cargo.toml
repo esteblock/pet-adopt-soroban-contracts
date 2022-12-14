@@ -1,6 +1,6 @@
 [package]
 name = "pet-adopt-soroban"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -12,11 +12,11 @@ crate-type = ["cdylib"]
 testutils = ["soroban-sdk/testutils", "soroban-auth/testutils"]
 
 [dependencies]
-soroban-sdk = "0.2.1"
+soroban-sdk = "0.3.2"
 soroban-auth = "0.1.0"
 
 [dev_dependencies]
-soroban-sdk = { version = "0.2.1", features = ["testutils"] }
+soroban-sdk = { version = "0.3.2", features = ["testutils"] }
 soroban-auth = { version = "0.1.0", features = ["testutils"] }
 
 [profile.release]

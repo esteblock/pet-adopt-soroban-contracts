@@ -1,5 +1,12 @@
 # pet-adopt-soroban-contracts
 
+# Requirements:
+soroban-cli v0.3.3
+```
+cargo install --locked --version 0.3.3 soroban-cli
+```
+
+
 # Test
 ```
 cargo test
@@ -61,6 +68,7 @@ echo "Contract deployed with id $PET_ADOPT_ID"
 
 ```
 
+Adopt a pet from the terminal
 
 ```
 soroban invoke \
@@ -68,11 +76,38 @@ soroban invoke \
     --secret-key $SECRETKEY \
     --rpc-url http://localhost:8000/soroban/rpc \
     --network-passphrase 'Standalone Network ; February 2017' \
-    --fn hello \
-    --arg friend
+    --fn adopt \
+    --arg 1
 ```
 
+Check who is the adopter of pet 1:
+```
+soroban invoke \
+    --id $PET_ADOPT_ID \
+    --secret-key $SECRETKEY \
+    --rpc-url http://localhost:8000/soroban/rpc \
+    --network-passphrase 'Standalone Network ; February 2017' \
+    --fn adopter \
+    --arg 1
+```
 
+Check who is the adopter of pet 2:
+```
+soroban invoke \
+    --id $PET_ADOPT_ID \
+    --secret-key $SECRETKEY \
+    --rpc-url http://localhost:8000/soroban/rpc \
+    --network-passphrase 'Standalone Network ; February 2017' \
+    --fn adopter \
+    --arg 1
+```
+
+As expected, you'll see that if no one has adopted the pet, the current adopter is the Contract itself (it has been coded this way). You should see something like:
+
+```
+["Contract",[220,228,152,154,195,137,188,41,177,27,202,52,159,3,226,232,105,48,20,182,152,122,13,236,11,241,175,157,0,104,99,173]]
+
+```
 
 Erase your secrets from the environment
 ```
